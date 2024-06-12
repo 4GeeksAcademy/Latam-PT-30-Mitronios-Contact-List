@@ -7,6 +7,7 @@ import injectContext from "./store/appContext";
 
 import { ContactCard } from "./component/ContactCard.jsx";
 import { Footer } from "./component/footer";
+import { EditContact } from "./views/EditContact.jsx";
 
 //create your first component
 const Layout = () => {
@@ -17,12 +18,13 @@ const Layout = () => {
 	return (
 		<div>
 			<BrowserRouter basename={basename}>
-					<Routes>
-						<Route path="/" element={<ContactCard />} />
-						<Route path="/addcontact" element={<AddContact />} />
-						<Route path="*" element={<h1>Not found!</h1>} />
-					</Routes>
-					<Footer />
+				<Routes>
+					<Route path="/" element={<ContactCard />} />
+					<Route path="/addcontact" element={<AddContact />} />
+					<Route path="/editcontact/:id" element={<EditContact />} />
+					<Route path="*" element={<h1>Not found!</h1>} />
+				</Routes>
+				<Footer />
 			</BrowserRouter>
 		</div>
 	);
