@@ -8,8 +8,8 @@ import { Context } from "../store/appContext.js";
 export const Contact = ({ name, phone, email, address, id }) => {
     const { store, actions } = useContext(Context)
 
-    const deleteContact = async (id) => {
-        await actions.deleteContacts(id)
+    const deleteContact = async () => {
+        actions.deleteContacts(id)
         console.log("Funciona onCLick", deleteContact)
     }
     const navigate = useNavigate();
@@ -39,7 +39,8 @@ export const Contact = ({ name, phone, email, address, id }) => {
                         </span>
                         <span>
                             <i className="fa-solid fa-trash"
-                                onClick={deleteContact(id)}
+                                onClick={() => deleteContact()
+                                }
                             ></i>
                         </span>
                     </div>

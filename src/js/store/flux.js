@@ -73,7 +73,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							})
 						})
 					if (!response.ok) {
-						console.log("Uh oh!", data.status)
+						console.log("Uh oh!", response.status)
 						return
 					}
 					const data = await response.json()
@@ -83,11 +83,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			deleteContacts: async (id) => {
 				try {
-					const response = fetch("https://playground.4geeks.com/contact/agendas/Mitronios/contacts/" + id, {
+					const response = await fetch("https://playground.4geeks.com/contact/agendas/Mitronios/contacts/" + id, {
 						method: "DELETE",
 					})
-					if (!response.ok) {
-						alert("You can't do that", response.status)
+					if (response.ok) {
+						alert("Contact Deleted!", response.status)
+						getActions().getContacts()
 						return;
 					}
 				} catch (error) {
